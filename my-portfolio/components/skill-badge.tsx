@@ -25,7 +25,7 @@ export default function SkillBadge({ name, level }: SkillBadgeProps) {
       transition={{ duration: 0.5 }}
     >
       <Badge
-        variant="outline"
+        // variant="outline" // Removed as it is not a valid prop
         className={`justify-center transition-all duration-300 ${
           isHovered ? "bg-primary text-primary-foreground" : ""
         }`}

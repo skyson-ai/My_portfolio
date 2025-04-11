@@ -51,7 +51,7 @@ export default function Home() {
                     <span className="absolute inset-0 bg-gradient-to-r from-purple-500 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </Link>
                 </Button>
-                <Button variant="outline" asChild>
+                <Button asChild>
                   <Link href="#contact">Contact Me</Link>
                 </Button>
               </div>
