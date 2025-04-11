@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/hooks/use-toast"
+import { motion } from "framer-motion"
 
 export default function ContactForm() {
   const { toast } = useToast()
@@ -58,13 +59,23 @@ export default function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div className="space-y-2">
+        <motion.div
+          className="space-y-2"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+        >
           <label htmlFor="name" className="text-sm font-medium">
             Name
           </label>
           <Input id="name" name="name" value={formData.name} onChange={handleChange} placeholder="Your name" required />
-        </div>
-        <div className="space-y-2">
+        </motion.div>
+        <motion.div
+          className="space-y-2"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3, delay: 0.1 }}
+        >
           <label htmlFor="email" className="text-sm font-medium">
             Email
           </label>
@@ -77,9 +88,14 @@ export default function ContactForm() {
             placeholder="Your email"
             required
           />
-        </div>
+        </motion.div>
       </div>
-      <div className="space-y-2">
+      <motion.div
+        className="space-y-2"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, delay: 0.2 }}
+      >
         <label htmlFor="subject" className="text-sm font-medium">
           Subject
         </label>
@@ -91,8 +107,13 @@ export default function ContactForm() {
           placeholder="Subject of your message"
           required
         />
-      </div>
-      <div className="space-y-2">
+      </motion.div>
+      <motion.div
+        className="space-y-2"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, delay: 0.3 }}
+      >
         <label htmlFor="message" className="text-sm font-medium">
           Message
         </label>
@@ -105,10 +126,17 @@ export default function ContactForm() {
           rows={5}
           required
         />
-      </div>
-      <Button type="submit" className="w-full" disabled={isSubmitting}>
-        {isSubmitting ? "Sending..." : "Send Message"}
-      </Button>
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, delay: 0.4 }}
+      >
+        <Button type="submit" className="w-full relative overflow-hidden group" disabled={isSubmitting}>
+          <span className="relative z-10">{isSubmitting ? "Sending..." : "Send Message"}</span>
+          <span className="absolute inset-0 bg-gradient-to-r from-purple-500 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        </Button>
+      </motion.div>
     </form>
   )
 }
