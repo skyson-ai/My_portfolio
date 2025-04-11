@@ -1,20 +1,38 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { Github, Linkedin, Mail, ArrowRight, Code, Database, Brain } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import ProjectCard from "@/components/project-card"
-import SkillBadge from "@/components/skill-badge"
-import ContactForm from "@/components/contact-form"
-import FadeIn from "@/components/animations/fade-in"
-import StaggeredChildren from "@/components/animations/staggered-children"
-import ParticleBackground from "@/components/animations/particle-background"
-import TypingText from "@/components/animations/typing-text"
-import ParallaxSection from "@/components/animations/parallax-section"
-import FloatingElement from "@/components/animations/floating-element"
-import RevealText from "@/components/animations/reveal-text"
-import Navbar from "@/components/navbar"
-import { motion } from "framer-motion"
+import Link from "next/link";
+import {
+  Github,
+  Linkedin,
+  Mail,
+  ArrowRight,
+  Code,
+  Database,
+  Brain,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import ProjectCard from "@/components/project-card";
+import SkillBadge from "@/components/skill-badge";
+import ContactForm from "@/components/contact-form";
+import FadeIn from "@/components/animations/fade-in";
+import StaggeredChildren from "@/components/animations/staggered-children";
+import ParticleBackground from "@/components/animations/particle-background";
+import TypingText from "@/components/animations/typing-text";
+import ParallaxSection from "@/components/animations/parallax-section";
+import FloatingElement from "@/components/animations/floating-element";
+import RevealText from "@/components/animations/reveal-text";
+import Navbar from "@/components/navbar";
+import { motion } from "framer-motion";
+
+// Workaround for TS2786 error: Type assert lucide-react icons to bypass JSX type mismatch
+// TODO: Update react, @types/react, lucide-react to latest versions for a permanent fix
+const ArrowRightIcon = ArrowRight as any;
+const GithubIcon = Github as any;
+const LinkedinIcon = Linkedin as any;
+const MailIcon = Mail as any;
+const CodeIcon = Code as any;
+const DatabaseIcon = Database as any;
+const BrainIcon = Brain as any;
 
 export default function Home() {
   return (
@@ -33,20 +51,30 @@ export default function Home() {
                 <span className="block mt-2">
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-indigo-600">
                     <TypingText
-                      sequences={["& ML Enthusiast", 1000, "& Python Expert", 1000, "& Problem Solver", 1000]}
+                      sequences={[
+                        "& ML Enthusiast",
+                        1000,
+                        "& Python Expert",
+                        1000,
+                        "& Problem Solver",
+                        1000,
+                      ]}
                     />
                   </span>
                 </span>
               </h1>
               <p className="text-xl text-gray-500 dark:text-gray-400 max-w-[600px]">
-                Specialized in Python (Django/FastAPI) with experience in Next.js and a passion for Machine Learning.
+                Specialized in Python (Django/FastAPI) with experience in Next.js
+                and a passion for Machine Learning.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Button asChild className="relative overflow-hidden group">
                   <Link href="#projects">
                     <span className="relative z-10 flex items-center">
                       View Projects{" "}
-                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      <span className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1">
+                        <ArrowRightIcon />
+                      </span>
                     </span>
                     <span className="absolute inset-0 bg-gradient-to-r from-purple-500 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </Link>
@@ -62,7 +90,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50 transition-transform hover:scale-110"
                 >
-                  <Github className="h-6 w-6" />
+                  <GithubIcon className="h-6 w-6" />
                   <span className="sr-only">GitHub</span>
                 </Link>
                 <Link
@@ -71,14 +99,14 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50 transition-transform hover:scale-110"
                 >
-                  <Linkedin className="h-6 w-6" />
+                  <LinkedinIcon className="h-6 w-6" />
                   <span className="sr-only">LinkedIn</span>
                 </Link>
                 <Link
                   href="mailto:your-email@example.com"
                   className="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50 transition-transform hover:scale-110"
                 >
-                  <Mail className="h-6 w-6" />
+                  <MailIcon className="h-6 w-6" />
                   <span className="sr-only">Email</span>
                 </Link>
               </div>
@@ -98,22 +126,33 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-16 bg-white/80 dark:bg-gray-950/80 backdrop-blur-sm relative">
+      <section
+        id="about"
+        className="py-16 bg-white/80 dark:bg-gray-950/80 backdrop-blur-sm relative"
+      >
         <div className="absolute inset-0 bg-grid-pattern opacity-5" />
         <div className="container px-4 md:px-6 mx-auto relative z-10">
           <FadeIn>
-            <RevealText text="About Me" className="text-3xl font-bold tracking-tighter mb-8" />
+            <RevealText
+              text="About Me"
+              className="text-3xl font-bold tracking-tighter mb-8"
+            />
           </FadeIn>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <ParallaxSection direction="up" className="space-y-4">
               <h3 className="text-xl font-semibold">Background</h3>
               <p className="text-gray-500 dark:text-gray-400">
-                I'm a passionate backend developer with expertise in Python frameworks like Django and FastAPI. I also
-                have experience with Next.js for full-stack development. Currently, I'm expanding my skills in Machine
-                Learning to build more intelligent applications.
+                I'm a passionate backend developer with expertise in Python
+                frameworks like Django and FastAPI. I also have experience with
+                Next.js for full-stack development. Currently, I'm expanding my
+                skills in Machine Learning to build more intelligent applications.
               </p>
             </ParallaxSection>
-            <ParallaxSection direction="up" baseVelocity={0.3} className="space-y-4">
+            <ParallaxSection
+              direction="up"
+              baseVelocity={0.3}
+              className="space-y-4"
+            >
               <h3 className="text-xl font-semibold">Education & Experience</h3>
               <ul className="space-y-2 text-gray-500 dark:text-gray-400">
                 <li className="flex items-center gap-2">
@@ -121,8 +160,8 @@ export default function Home() {
                   Bachelor's in Computer Science (or your actual degree)
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-purple-500" />X years of experience in backend
-                  development
+                  <span className="h-1.5 w-1.5 rounded-full bg-purple-500" />X
+                  years of experience in backend development
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-purple-500" />
@@ -139,18 +178,26 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-16 bg-gray-50/80 dark:bg-gray-900/80 backdrop-blur-sm relative">
+      <section
+        id="skills"
+        className="py-16 bg-gray-50/80 dark:bg-gray-900/80 backdrop-blur-sm relative"
+      >
         <div className="container px-4 md:px-6 mx-auto relative z-10">
           <FadeIn>
-            <RevealText text="Skills" className="text-3xl font-bold tracking-tighter mb-8" />
+            <RevealText
+              text="Skills"
+              className="text-3xl font-bold tracking-tighter mb-8"
+            />
           </FadeIn>
           <div className="space-y-12">
             <div className="relative">
               <FloatingElement className="absolute -left-12 top-0 text-purple-500/20 dark:text-purple-500/10">
-                <Code className="w-24 h-24" />
+                <CodeIcon className="w-24 h-24" />
               </FloatingElement>
               <FadeIn direction="up">
-                <h3 className="text-xl font-semibold mb-4 pl-4 border-l-4 border-purple-500">Backend Development</h3>
+                <h3 className="text-xl font-semibold mb-4 pl-4 border-l-4 border-purple-500">
+                  Backend Development
+                </h3>
                 <StaggeredChildren className="flex flex-wrap gap-3">
                   <SkillBadge name="Python" level={90} />
                   <SkillBadge name="Django" level={85} />
@@ -164,10 +211,12 @@ export default function Home() {
 
             <div className="relative">
               <FloatingElement className="absolute -right-12 top-0 text-indigo-500/20 dark:text-indigo-500/10">
-                <Brain className="w-24 h-24" />
+                <BrainIcon className="w-24 h-24" />
               </FloatingElement>
               <FadeIn direction="up" delay={0.2}>
-                <h3 className="text-xl font-semibold mb-4 pl-4 border-l-4 border-indigo-500">Machine Learning</h3>
+                <h3 className="text-xl font-semibold mb-4 pl-4 border-l-4 border-indigo-500">
+                  Machine Learning
+                </h3>
                 <StaggeredChildren className="flex flex-wrap gap-3" delay={0.2}>
                   <SkillBadge name="NumPy" level={70} />
                   <SkillBadge name="Pandas" level={75} />
@@ -180,10 +229,12 @@ export default function Home() {
 
             <div className="relative">
               <FloatingElement className="absolute -left-12 top-0 text-pink-500/20 dark:text-pink-500/10">
-                <Database className="w-24 h-24" />
+                <DatabaseIcon className="w-24 h-24" />
               </FloatingElement>
               <FadeIn direction="up" delay={0.4}>
-                <h3 className="text-xl font-semibold mb-4 pl-4 border-l-4 border-pink-500">Frontend Development</h3>
+                <h3 className="text-xl font-semibold mb-4 pl-4 border-l-4 border-pink-500">
+                  Frontend Development
+                </h3>
                 <StaggeredChildren className="flex flex-wrap gap-3" delay={0.4}>
                   <SkillBadge name="Next.js" level={75} />
                   <SkillBadge name="React" level={70} />
@@ -198,10 +249,16 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-16 bg-white/80 dark:bg-gray-950/80 backdrop-blur-sm relative">
+      <section
+        id="projects"
+        className="py-16 bg-white/80 dark:bg-gray-950/80 backdrop-blur-sm relative"
+      >
         <div className="container px-4 md:px-6 mx-auto relative z-10">
           <FadeIn>
-            <RevealText text="Projects" className="text-3xl font-bold tracking-tighter mb-8" />
+            <RevealText
+              text="Projects"
+              className="text-3xl font-bold tracking-tighter mb-8"
+            />
           </FadeIn>
           <StaggeredChildren className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <ProjectCard
@@ -251,40 +308,61 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-16 bg-gray-50/80 dark:bg-gray-900/80 backdrop-blur-sm relative">
+      <section
+        id="contact"
+        className="py-16 bg-gray-50/80 dark:bg-gray-900/80 backdrop-blur-sm relative"
+      >
         <div className="container px-4 md:px-6 mx-auto relative z-10">
           <FadeIn>
-            <RevealText text="Contact Me" className="text-3xl font-bold tracking-tighter mb-8" />
+            <RevealText
+              text="Contact Me"
+              className="text-3xl font-bold tracking-tighter mb-8"
+            />
           </FadeIn>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <ParallaxSection direction="right" className="space-y-4">
               <h3 className="text-xl font-semibold">Get in Touch</h3>
               <p className="text-gray-500 dark:text-gray-400">
-                I'm always open to discussing new projects, opportunities, or partnerships. Feel free to reach out using
-                the form or through my social media profiles.
+                I'm always open to discussing new projects, opportunities, or
+                partnerships. Feel free to reach out using the form or through my
+                social media profiles.
               </p>
               <div className="space-y-4">
                 <motion.div
-                  className="flex items-center gap-2 text-gray-500 dark:text-gray-400 p-3 rounded-lg border border-gray-200 dark:border-gray-800"
-                  whileHover={{ x: 5, backgroundColor: "rgba(99, 102, 241, 0.1)" }}
+                  {...{
+                    className:
+                      "flex items-center gap-2 text-gray-500 dark:text-gray-400 p-3 rounded-lg border border-gray-200 dark:border-gray-800",
+                    whileHover: { x: 5, backgroundColor: "rgba(99, 102, 241, 0.1)" },
+                  }}
                 >
-                  <Mail className="h-5 w-5 text-purple-500" />
+                  <MailIcon className="h-5 w-5 text-purple-500" />
                   <span>your-email@example.com</span>
                 </motion.div>
                 <motion.div
-                  className="flex items-center gap-2 text-gray-500 dark:text-gray-400 p-3 rounded-lg border border-gray-200 dark:border-gray-800"
+                  {...{
+                    className:
+                      "flex items-center gap-2 text-gray-500 dark:text-gray-400 p-3 rounded-lg border border-gray-200 dark:border-gray-800",
+                  }}
                   whileHover={{ x: 5, backgroundColor: "rgba(99, 102, 241, 0.1)" }}
                 >
-                  <Github className="h-5 w-5 text-purple-500" />
-                  <Link href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                  <GithubIcon className="h-5 w-5 text-purple-500" />
+                  <Link
+                    href="https://github.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                  >
                     github.com/yourusername
                   </Link>
                 </motion.div>
                 <motion.div
-                  className="flex items-center gap-2 text-gray-500 dark:text-gray-400 p-3 rounded-lg border border-gray-200 dark:border-gray-800"
                   whileHover={{ x: 5, backgroundColor: "rgba(99, 102, 241, 0.1)" }}
+                  {...{
+                    className:
+                      "flex items-center gap-2 text-gray-500 dark:text-gray-400 p-3 rounded-lg border border-gray-200 dark:border-gray-800",
+                  }}
                 >
-                  <Linkedin className="h-5 w-5 text-purple-500" />
+                  <LinkedinIcon className="h-5 w-5 text-purple-500" />
                   <Link
                     href="https://linkedin.com"
                     target="_blank"
@@ -331,5 +409,5 @@ export default function Home() {
         </div>
       </footer>
     </div>
-  )
+  );
 }
