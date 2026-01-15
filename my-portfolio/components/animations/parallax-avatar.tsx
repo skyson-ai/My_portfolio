@@ -11,7 +11,7 @@ interface ParallaxAvatarProps {
 }
 
 export default function ParallaxAvatar({ 
-  src = "/placeholder.jpg", 
+  src = "/image.jpeg", 
   alt = "Profile", 
   className = "" 
 }: ParallaxAvatarProps) {
@@ -67,19 +67,14 @@ export default function ParallaxAvatar({
         {/* Main avatar */}
         <div className="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl">
           <div className="relative w-full h-full bg-gradient-to-br from-purple-500 to-indigo-600">
-            {src !== "/placeholder.jpg" ? (
-              <Image
-                src={src}
-                alt={alt}
-                fill
-                className="object-cover"
-                priority
-              />
-            ) : (
-              <div className="absolute inset-0 flex items-center justify-center text-white text-lg font-medium">
-                Your Photo Here
-              </div>
-            )}
+            <Image
+              src={src}
+              alt={alt}
+              fill
+              className="object-cover"
+              priority
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
             
             {/* Overlay gradient */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
@@ -113,19 +108,49 @@ export default function ParallaxAvatar({
         {/* Glow effect */}
         <motion.div
           className="absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-500 to-indigo-600 opacity-0 blur-xl"
-          animate={{ opacity: isHovered ? 0.3 : 0 }}
+          animate={{ opacity: isHovered ? 0.4 : 0 }}
           transition={{ duration: 0.3 }}
         />
 
         {/* Border glow */}
         <motion.div
-          className="absolute inset-0 rounded-2xl border border-purple-500/30"
+          className="absolute inset-0 rounded-2xl border-2 border-purple-500/30"
           animate={{ 
-            borderColor: isHovered ? "rgba(139, 92, 246, 0.6)" : "rgba(139, 92, 246, 0.3)",
-            boxShadow: isHovered ? "0 0 30px rgba(139, 92, 246, 0.3)" : "none"
+            borderColor: isHovered ? "rgba(139, 92, 246, 0.8)" : "rgba(139, 92, 246, 0.3)",
+            boxShadow: isHovered ? "0 0 40px rgba(139, 92, 246, 0.4), inset 0 0 20px rgba(139, 92, 246, 0.1)" : "inset 0 0 10px rgba(139, 92, 246, 0.05)"
           }}
           transition={{ duration: 0.3 }}
         />
+        
+        {/* Corner accents */}
+        {isHovered && (
+          <>
+            <motion.div
+              className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-purple-400"
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.1 }}
+            />
+            <motion.div
+              className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-purple-400"
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2 }}
+            />
+            <motion.div
+              className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-purple-400"
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3 }}
+            />
+            <motion.div
+              className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-purple-400"
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.4 }}
+            />
+          </>
+        )}
       </motion.div>
     </div>
   );
