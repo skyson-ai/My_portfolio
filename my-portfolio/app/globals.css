@@ -63,3 +63,176 @@
     linear-gradient(to bottom, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
   background-size: 40px 40px;
 }
+
+/* Custom styles for 3D transforms and animations */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #8b5cf6, #3b82f6);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #7c3aed, #2563eb);
+}
+
+/* Glitch effect utilities */
+@keyframes glitch {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+  }
+  25% {
+    text-shadow: 2px 2px 0px rgba(239, 68, 68, 0.5), -2px -2px 0px rgba(59, 130, 246, 0.5);
+  }
+  50% {
+    text-shadow: -2px 2px 0px rgba(239, 68, 68, 0.5), 2px -2px 0px rgba(59, 130, 246, 0.5);
+  }
+  75% {
+    text-shadow: 2px -2px 0px rgba(239, 68, 68, 0.5), -2px 2px 0px rgba(59, 130, 246, 0.5);
+  }
+}
+
+.glitch-text {
+  animation: glitch 0.3s ease-in-out;
+}
+
+/* Breathing animation */
+@keyframes breathing {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.breathing {
+  animation: breathing 4s ease-in-out infinite;
+}
+
+/* Portal effect */
+@keyframes portal-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.portal-swirl {
+  animation: portal-rotate 2s linear infinite;
+}
+
+/* Hologram scan lines */
+@keyframes scan-line {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+.hologram-scan {
+  animation: scan-line 2s linear infinite;
+}
+
+/* Neural network connections */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.neural-pulse {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Quantum navigation effects */
+@keyframes quantum-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.quantum-bg {
+  background: linear-gradient(270deg, #8b5cf6, #3b82f6, #ec4899, #8b5cf6);
+  background-size: 400% 400%;
+  animation: quantum-shift 10s ease infinite;
+}
+
+/* XP progress animations */
+@keyframes xp-fill {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.xp-progress {
+  animation: xp-fill 1s ease-out forwards;
+}
+
+/* Floating elements */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Magnetic button effect */
+.magnetic-button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.magnetic-button:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .preserve-3d {
+    transform-style: flat;
+  }
+}
