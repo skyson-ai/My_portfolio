@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useRef, useEffect, useState } from "react"
-import { motion, useAnimation } from "framer-motion"
+import { motion, useAnimation, type Variants } from "framer-motion"
 
 interface FadeInProps {
   children: React.ReactNode
@@ -48,7 +48,7 @@ export default function FadeIn({
 
   const offset = getDirectionOffset()
 
-  const variants = {
+  const variants: Variants = {
     hidden: { opacity: 0, x: offset.x, y: offset.y },
     visible: {
       opacity: 1,
@@ -57,7 +57,7 @@ export default function FadeIn({
       transition: {
         duration,
         delay,
-        ease: "easeOut",
+        ease: [0.25, 0.1, 0.25, 1], // easeOut equivalent
       },
     },
   }

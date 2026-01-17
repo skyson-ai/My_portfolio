@@ -31,6 +31,7 @@ import SphericalSkills from "@/components/skills/spherical-skills";
 import PortalCard from "@/components/projects/portal-card";
 import { MagneticButton, BreathingText } from "@/components/animations/micro-interactions";
 
+
 // Workaround for TS2786 error: Type assert lucide-react icons to bypass JSX type mismatch
 // TODO: Update react, @types/react, lucide-react to latest versions for a permanent fix
 const ArrowRightIcon = ArrowRight as any;
@@ -66,6 +67,23 @@ const skillsData = [
   { name: "Next.js", level: 75, category: "Frontend", icon: <CodeIcon />, color: "from-gray-400 to-slate-500", xp: 620, maxXP: 1000, unlocked: true },
   { name: "React", level: 70, category: "Frontend", icon: <CodeIcon />, color: "from-blue-400 to-indigo-500", xp: 550, maxXP: 1000, unlocked: true },
   { name: "TypeScript", level: 65, category: "Frontend", icon: <CodeIcon />, color: "from-blue-500 to-indigo-600", xp: 480, maxXP: 1000, unlocked: true },
+  // DevOps & Cloud Skills
+  { name: "AWS", level: 70, category: "DevOps", icon: <RocketIcon />, color: "from-orange-400 to-yellow-500", xp: 550, maxXP: 1000, unlocked: true },
+  { name: "Docker", level: 75, category: "DevOps", icon: <ShieldIcon />, color: "from-blue-400 to-cyan-500", xp: 620, maxXP: 1000, unlocked: true },
+  { name: "Kubernetes", level: 60, category: "DevOps", icon: <ZapIcon />, color: "from-purple-400 to-indigo-500", xp: 420, maxXP: 1000, unlocked: true },
+  { name: "CI/CD", level: 65, category: "DevOps", icon: <StarIcon />, color: "from-green-400 to-emerald-500", xp: 480, maxXP: 1000, unlocked: true },
+  { name: "GitHub Actions", level: 70, category: "DevOps", icon: <CodeIcon />, color: "from-gray-400 to-slate-600", xp: 550, maxXP: 1000, unlocked: true },
+  // Frontend Frameworks
+  { name: "Vue.js", level: 65, category: "Frontend", icon: <CodeIcon />, color: "from-green-400 to-teal-500", xp: 480, maxXP: 1000, unlocked: true },
+  { name: "Tailwind CSS", level: 80, category: "Frontend", icon: <CodeIcon />, color: "from-cyan-400 to-blue-500", xp: 680, maxXP: 1000, unlocked: true },
+  { name: "Framer Motion", level: 70, category: "Frontend", icon: <ZapIcon />, color: "from-purple-400 to-pink-500", xp: 550, maxXP: 1000, unlocked: true },
+  { name: "Chart.js", level: 60, category: "Frontend", icon: <BrainIcon />, color: "from-yellow-400 to-orange-500", xp: 420, maxXP: 1000, unlocked: true },
+  // Backend Technologies
+  { name: "Node.js", level: 70, category: "Backend", icon: <CodeIcon />, color: "from-green-400 to-yellow-500", xp: 550, maxXP: 1000, unlocked: true },
+  { name: "Express.js", level: 65, category: "Backend", icon: <RocketIcon />, color: "from-gray-400 to-slate-500", xp: 480, maxXP: 1000, unlocked: true },
+  { name: "MongoDB", level: 60, category: "Backend", icon: <DatabaseIcon />, color: "from-green-400 to-emerald-500", xp: 420, maxXP: 1000, unlocked: true },
+  { name: "Redis", level: 65, category: "Backend", icon: <ZapIcon />, color: "from-red-400 to-pink-500", xp: 480, maxXP: 1000, unlocked: true },
+  { name: "GraphQL", level: 55, category: "Backend", icon: <CodeIcon />, color: "from-purple-400 to-indigo-500", xp: 350, maxXP: 1000, unlocked: true },
 ];
 
 // Define projects for portal cards
@@ -416,6 +434,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      
 
       {/* Footer */}
       <footer className="py-8 bg-black/90 backdrop-blur-sm border-t border-white/10 relative z-10">
