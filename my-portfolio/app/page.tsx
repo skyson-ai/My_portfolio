@@ -27,7 +27,7 @@ import GlitchText from "@/components/animations/glitch-text";
 import NeuralBackground from "@/components/animations/neural-background";
 import ParallaxAvatar from "@/components/animations/parallax-avatar";
 import QuantumNav from "@/components/navigation/quantum-nav";
-import SphericalSkills from "@/components/skills/spherical-skills";
+import SkillsRevolution from "@/components/skills/skills-revolution";
 import PortalCard from "@/components/projects/portal-card";
 import { MagneticButton, BreathingText } from "@/components/animations/micro-interactions";
 
@@ -55,35 +55,251 @@ const sections = [
   { id: "contact", label: "Contact" },
 ];
 
-// Define skills for 3D sphere
+// Define skills for the new revolution system
 const skillsData = [
-  { name: "Python", level: 90, category: "Backend", icon: <CodeIcon />, color: "from-blue-400 to-cyan-500", xp: 850, maxXP: 1000, unlocked: true },
-  { name: "Django", level: 85, category: "Backend", icon: <DatabaseIcon />, color: "from-green-400 to-emerald-500", xp: 750, maxXP: 1000, unlocked: true },
-  { name: "FastAPI", level: 80, category: "Backend", icon: <RocketIcon />, color: "from-purple-400 to-pink-500", xp: 680, maxXP: 1000, unlocked: true },
-  { name: "PostgreSQL", level: 75, category: "Backend", icon: <DatabaseIcon />, color: "from-indigo-400 to-blue-500", xp: 600, maxXP: 1000, unlocked: true },
-  { name: "NumPy", level: 70, category: "ML", icon: <BrainIcon />, color: "from-yellow-400 to-orange-500", xp: 520, maxXP: 1000, unlocked: true },
-  { name: "Pandas", level: 75, category: "ML", icon: <BrainIcon />, color: "from-red-400 to-pink-500", xp: 580, maxXP: 1000, unlocked: true },
-  { name: "Scikit-learn", level: 65, category: "ML", icon: <BrainIcon />, color: "from-teal-400 to-cyan-500", xp: 450, maxXP: 1000, unlocked: true },
-  { name: "Next.js", level: 75, category: "Frontend", icon: <CodeIcon />, color: "from-gray-400 to-slate-500", xp: 620, maxXP: 1000, unlocked: true },
-  { name: "React", level: 70, category: "Frontend", icon: <CodeIcon />, color: "from-blue-400 to-indigo-500", xp: 550, maxXP: 1000, unlocked: true },
-  { name: "TypeScript", level: 65, category: "Frontend", icon: <CodeIcon />, color: "from-blue-500 to-indigo-600", xp: 480, maxXP: 1000, unlocked: true },
+  { 
+    name: "Python", 
+    level: 90, 
+    category: "Backend", 
+    icon: <CodeIcon />, 
+    color: "from-blue-400 to-cyan-500", 
+    experience: "5+ years",
+    projects: 42,
+    description: "Expert in Python development with deep knowledge of advanced patterns, async programming, and performance optimization. Extensive experience in building scalable backend systems and REST APIs."
+  },
+  { 
+    name: "Django", 
+    level: 85, 
+    category: "Backend", 
+    icon: <DatabaseIcon />, 
+    color: "from-green-400 to-emerald-500", 
+    experience: "4+ years",
+    projects: 28,
+    description: "Proficient in Django framework for building robust web applications. Skilled in Django REST Framework, authentication systems, and enterprise-level project architecture."
+  },
+  { 
+    name: "FastAPI", 
+    level: 80, 
+    category: "Backend", 
+    icon: <RocketIcon />, 
+    color: "from-purple-400 to-pink-500", 
+    experience: "3+ years",
+    projects: 15,
+    description: "Advanced FastAPI development for high-performance APIs. Expert in async/await patterns, automatic documentation, and modern Python web development."
+  },
+  { 
+    name: "PostgreSQL", 
+    level: 75, 
+    category: "Backend", 
+    icon: <DatabaseIcon />, 
+    color: "from-indigo-400 to-blue-500", 
+    experience: "4+ years",
+    projects: 35,
+    description: "Strong PostgreSQL skills including complex queries, optimization, indexing strategies, and database design patterns. Experience with large-scale data management."
+  },
+  { 
+    name: "NumPy", 
+    level: 70, 
+    category: "ML", 
+    icon: <BrainIcon />, 
+    color: "from-yellow-400 to-orange-500", 
+    experience: "3+ years",
+    projects: 12,
+    description: "Proficient in NumPy for numerical computing, data manipulation, and scientific computing. Experience with vectorized operations and performance optimization."
+  },
+  { 
+    name: "Pandas", 
+    level: 75, 
+    category: "ML", 
+    icon: <BrainIcon />, 
+    color: "from-red-400 to-pink-500", 
+    experience: "3+ years",
+    projects: 18,
+    description: "Advanced Pandas skills for data analysis, manipulation, and visualization. Expert in data cleaning, transformation, and complex data operations."
+  },
+  { 
+    name: "Scikit-learn", 
+    level: 65, 
+    category: "ML", 
+    icon: <BrainIcon />, 
+    color: "from-teal-400 to-cyan-500", 
+    experience: "2+ years",
+    projects: 8,
+    description: "Solid foundation in machine learning with Scikit-learn. Experience with classification, regression, clustering, and model evaluation techniques."
+  },
+  { 
+    name: "Next.js", 
+    level: 75, 
+    category: "Frontend", 
+    icon: <CodeIcon />, 
+    color: "from-gray-400 to-slate-500", 
+    experience: "3+ years",
+    projects: 20,
+    description: "Expert in Next.js for building modern web applications. Skilled in SSR, SSG, API routes, and performance optimization for production deployments."
+  },
+  { 
+    name: "React", 
+    level: 70, 
+    category: "Frontend", 
+    icon: <CodeIcon />, 
+    color: "from-blue-400 to-indigo-500", 
+    experience: "4+ years",
+    projects: 25,
+    description: "Strong React development skills including hooks, context API, and component architecture. Experience building scalable and maintainable frontend applications."
+  },
+  { 
+    name: "TypeScript", 
+    level: 65, 
+    category: "Frontend", 
+    icon: <CodeIcon />, 
+    color: "from-blue-500 to-indigo-600", 
+    experience: "3+ years",
+    projects: 18,
+    description: "Proficient in TypeScript for type-safe JavaScript development. Experience with advanced types, generics, and integration with modern frameworks."
+  },
   // DevOps & Cloud Skills
-  { name: "AWS", level: 70, category: "DevOps", icon: <RocketIcon />, color: "from-orange-400 to-yellow-500", xp: 550, maxXP: 1000, unlocked: true },
-  { name: "Docker", level: 75, category: "DevOps", icon: <ShieldIcon />, color: "from-blue-400 to-cyan-500", xp: 620, maxXP: 1000, unlocked: true },
-  { name: "Kubernetes", level: 60, category: "DevOps", icon: <ZapIcon />, color: "from-purple-400 to-indigo-500", xp: 420, maxXP: 1000, unlocked: true },
-  { name: "CI/CD", level: 65, category: "DevOps", icon: <StarIcon />, color: "from-green-400 to-emerald-500", xp: 480, maxXP: 1000, unlocked: true },
-  { name: "GitHub Actions", level: 70, category: "DevOps", icon: <CodeIcon />, color: "from-gray-400 to-slate-600", xp: 550, maxXP: 1000, unlocked: true },
+  { 
+    name: "AWS", 
+    level: 70, 
+    category: "DevOps", 
+    icon: <RocketIcon />, 
+    color: "from-orange-400 to-yellow-500", 
+    experience: "3+ years",
+    projects: 15,
+    description: "Solid AWS skills including EC2, S3, Lambda, and RDS. Experience with cloud architecture, deployment strategies, and cost optimization."
+  },
+  { 
+    name: "Docker", 
+    level: 75, 
+    category: "DevOps", 
+    icon: <ShieldIcon />, 
+    color: "from-blue-400 to-cyan-500", 
+    experience: "3+ years",
+    projects: 22,
+    description: "Expert in Docker for containerization and microservices architecture. Skilled in Docker Compose, multi-stage builds, and production deployment."
+  },
+  { 
+    name: "Kubernetes", 
+    level: 60, 
+    category: "DevOps", 
+    icon: <ZapIcon />, 
+    color: "from-purple-400 to-indigo-500", 
+    experience: "2+ years",
+    projects: 8,
+    description: "Intermediate Kubernetes skills for orchestration and scaling. Experience with pods, services, deployments, and basic cluster management."
+  },
+  { 
+    name: "CI/CD", 
+    level: 65, 
+    category: "DevOps", 
+    icon: <StarIcon />, 
+    color: "from-green-400 to-emerald-500", 
+    experience: "3+ years",
+    projects: 20,
+    description: "Strong CI/CD pipeline experience with automated testing, building, and deployment. Familiar with various tools and best practices."
+  },
+  { 
+    name: "GitHub Actions", 
+    level: 70, 
+    category: "DevOps", 
+    icon: <CodeIcon />, 
+    color: "from-gray-400 to-slate-600", 
+    experience: "2+ years",
+    projects: 18,
+    description: "Proficient in GitHub Actions for automation workflows. Experience with custom actions, workflow optimization, and integration testing."
+  },
   // Frontend Frameworks
-  { name: "Vue.js", level: 65, category: "Frontend", icon: <CodeIcon />, color: "from-green-400 to-teal-500", xp: 480, maxXP: 1000, unlocked: true },
-  { name: "Tailwind CSS", level: 80, category: "Frontend", icon: <CodeIcon />, color: "from-cyan-400 to-blue-500", xp: 680, maxXP: 1000, unlocked: true },
-  { name: "Framer Motion", level: 70, category: "Frontend", icon: <ZapIcon />, color: "from-purple-400 to-pink-500", xp: 550, maxXP: 1000, unlocked: true },
-  { name: "Chart.js", level: 60, category: "Frontend", icon: <BrainIcon />, color: "from-yellow-400 to-orange-500", xp: 420, maxXP: 1000, unlocked: true },
+  { 
+    name: "Vue.js", 
+    level: 65, 
+    category: "Frontend", 
+    icon: <CodeIcon />, 
+    color: "from-green-400 to-teal-500", 
+    experience: "2+ years",
+    projects: 10,
+    description: "Solid Vue.js development skills including Vue 3 composition API, state management, and component libraries. Experience with modern Vue ecosystem."
+  },
+  { 
+    name: "Tailwind CSS", 
+    level: 80, 
+    category: "Frontend", 
+    icon: <CodeIcon />, 
+    color: "from-cyan-400 to-blue-500", 
+    experience: "3+ years",
+    projects: 30,
+    description: "Expert in Tailwind CSS for rapid UI development. Skilled in custom configurations, responsive design, and maintaining design systems."
+  },
+  { 
+    name: "Framer Motion", 
+    level: 70, 
+    category: "Frontend", 
+    icon: <ZapIcon />, 
+    color: "from-purple-400 to-pink-500", 
+    experience: "2+ years",
+    projects: 15,
+    description: "Advanced Framer Motion skills for creating complex animations and interactions. Experience with gesture animations, layout animations, and performance optimization."
+  },
+  { 
+    name: "Chart.js", 
+    level: 60, 
+    category: "Frontend", 
+    icon: <BrainIcon />, 
+    color: "from-yellow-400 to-orange-500", 
+    experience: "2+ years",
+    projects: 8,
+    description: "Proficient in Chart.js for data visualization. Experience with custom charts, real-time data updates, and interactive dashboards."
+  },
   // Backend Technologies
-  { name: "Node.js", level: 70, category: "Backend", icon: <CodeIcon />, color: "from-green-400 to-yellow-500", xp: 550, maxXP: 1000, unlocked: true },
-  { name: "Express.js", level: 65, category: "Backend", icon: <RocketIcon />, color: "from-gray-400 to-slate-500", xp: 480, maxXP: 1000, unlocked: true },
-  { name: "MongoDB", level: 60, category: "Backend", icon: <DatabaseIcon />, color: "from-green-400 to-emerald-500", xp: 420, maxXP: 1000, unlocked: true },
-  { name: "Redis", level: 65, category: "Backend", icon: <ZapIcon />, color: "from-red-400 to-pink-500", xp: 480, maxXP: 1000, unlocked: true },
-  { name: "GraphQL", level: 55, category: "Backend", icon: <CodeIcon />, color: "from-purple-400 to-indigo-500", xp: 350, maxXP: 1000, unlocked: true },
+  { 
+    name: "Node.js", 
+    level: 70, 
+    category: "Backend", 
+    icon: <CodeIcon />, 
+    color: "from-green-400 to-yellow-500", 
+    experience: "3+ years",
+    projects: 20,
+    description: "Strong Node.js development skills including Express, event-driven programming, and microservices architecture. Experience with production deployments."
+  },
+  { 
+    name: "Express.js", 
+    level: 65, 
+    category: "Backend", 
+    icon: <RocketIcon />, 
+    color: "from-gray-400 to-slate-500", 
+    experience: "3+ years",
+    projects: 18,
+    description: "Proficient in Express.js for building REST APIs and web applications. Experience with middleware, authentication, and scalable architecture patterns."
+  },
+  { 
+    name: "MongoDB", 
+    level: 60, 
+    category: "Backend", 
+    icon: <DatabaseIcon />, 
+    color: "from-green-400 to-emerald-500", 
+    experience: "2+ years",
+    projects: 12,
+    description: "Solid MongoDB skills including schema design, aggregation pipelines, and performance optimization. Experience with both small and large-scale applications."
+  },
+  { 
+    name: "Redis", 
+    level: 65, 
+    category: "Backend", 
+    icon: <ZapIcon />, 
+    color: "from-red-400 to-pink-500", 
+    experience: "2+ years",
+    projects: 15,
+    description: "Proficient in Redis for caching, session management, and real-time applications. Experience with data structures and pub/sub patterns."
+  },
+  { 
+    name: "GraphQL", 
+    level: 55, 
+    category: "Backend", 
+    icon: <CodeIcon />, 
+    color: "from-purple-400 to-indigo-500", 
+    experience: "1+ years",
+    projects: 6,
+    description: "Intermediate GraphQL skills for API development. Experience with schema design, resolvers, and Apollo Server integration."
+  },
 ];
 
 // Define projects for portal cards
@@ -326,9 +542,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Skills Section - 3D Spherical */}
+      {/* Skills Section - Revolution */}
       <section id="skills" className="relative">
-        <SphericalSkills skills={skillsData} />
+        <SkillsRevolution skills={skillsData} />
       </section>
 
       {/* Projects Section - Portal Cards */}

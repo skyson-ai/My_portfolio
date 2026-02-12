@@ -68,12 +68,13 @@ export default function SphericalSkills({ skills }: SphericalSkillsProps) {
   };
 
   const calculatePosition = (index: number, total: number) => {
+    const radius = 240;
     const phi = Math.acos(-1 + (2 * index) / total);
     const theta = Math.sqrt(total * Math.PI) * phi;
     
-    const x = Math.cos(theta) * Math.sin(phi) * 200;
-    const y = Math.sin(theta) * Math.sin(phi) * 200;
-    const z = Math.cos(phi) * 200;
+    const x = Math.cos(theta) * Math.sin(phi) * radius;
+    const y = Math.sin(theta) * Math.sin(phi) * radius;
+    const z = Math.cos(phi) * radius;
     
     return { x, y, z };
   };
@@ -88,27 +89,39 @@ export default function SphericalSkills({ skills }: SphericalSkillsProps) {
   };
 
   return (
-    <div className="relative min-h-screen bg-black flex items-center justify-center overflow-hidden">
+    <div className="relative min-h-[900px] bg-black flex items-center justify-center overflow-hidden">
       {/* Background effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-indigo-900/20" />
-      <div className="absolute inset-0 bg-grid-pattern opacity-5" />
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900/40 via-black to-slate-900/20" />
+      <div className="absolute inset-0 bg-grid-pattern opacity-[0.03]" />
+      <div className="absolute -top-40 left-1/2 h-80 w-[700px] -translate-x-1/2 rounded-full bg-gradient-to-r from-cyan-500/10 via-slate-500/10 to-blue-500/10 blur-3xl" />
       
-      {/* 3D Sphere Container */}
-      <div 
-        ref={containerRef}
-        className="relative w-full h-[600px] flex items-center justify-center cursor-move"
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-      >
-        <motion.div
-          className="relative w-full h-full preserve-3d"
-          style={{
-            rotateX: springRotateX,
-            rotateY: springRotateY,
-            transformStyle: "preserve-3d",
-            transform: "perspective(1000px)",
-          }}
+      <div className="container px-4 md:px-6 mx-auto relative z-10">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white">
+            Skills & Expertise
+          </h2>
+          <p className="mt-4 text-base md:text-lg text-slate-300 max-w-2xl mx-auto">
+            A focused, production-ready stack across backend, frontend, data, and cloud.
+          </p>
+          <div className="mt-6 h-1 w-24 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full" />
+        </div>
+
+        {/* 3D Sphere Container */}
+        <div 
+          ref={containerRef}
+          className="relative w-full h-[700px] md:h-[760px] flex items-center justify-center cursor-move"
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
         >
+          <motion.div
+            className="relative w-full h-full preserve-3d"
+            style={{
+              rotateX: springRotateX,
+              rotateY: springRotateY,
+              transformStyle: "preserve-3d",
+              transform: "perspective(1000px)",
+            }}
+          >
           {/* Skills positioned on sphere */}
           {skills.map((skill, index) => {
             const position = calculatePosition(index, skills.length);
@@ -117,50 +130,50 @@ export default function SphericalSkills({ skills }: SphericalSkillsProps) {
             return (
               <motion.div
                 key={skill.name}
-                className="absolute w-20 h-20 cursor-pointer"
+                className="absolute w-24 h-24 cursor-pointer"
                 style={{
                   transform: `translate3d(${position.x}px, ${position.y}px, ${position.z}px)`,
                   left: "50%",
                   top: "50%",
-                  marginLeft: "-40px",
-                  marginTop: "-40px",
+                  marginLeft: "-48px",
+                  marginTop: "-48px",
                 }}
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
-                whileHover={{ scale: 1.2 }}
+                whileHover={{ scale: 1.15 }}
                 onClick={() => setSelectedSkill(skill)}
               >
                 <div className={`relative w-full h-full rounded-full bg-gradient-to-br ${skill.color} p-0.5`}>
-                  <div className="w-full h-full rounded-full bg-black/80 backdrop-blur-sm flex items-center justify-center">
+                  <div className="w-full h-full rounded-full bg-black/85 backdrop-blur-sm flex items-center justify-center">
                     <div className="text-white text-center">
                       <div className="text-2xl mb-1">{skill.icon}</div>
-                      <div className="text-xs font-semibold truncate">{skill.name}</div>
-                      <div className="text-xs opacity-75">{skill.level}%</div>
+                      <div className="text-[11px] font-semibold truncate">{skill.name}</div>
+                      <div className="text-[11px] opacity-75">{skill.level}%</div>
                     </div>
                   </div>
                   
                   {/* XP Progress Ring */}
                   <svg className="absolute inset-0 w-full h-full -rotate-90">
                     <circle
-                      cx="40"
-                      cy="40"
-                      r="38"
+                      cx="48"
+                      cy="48"
+                      r="46"
                       stroke="rgba(255,255,255,0.1)"
                       strokeWidth="2"
                       fill="none"
                     />
                     <motion.circle
-                      cx="40"
-                      cy="40"
-                      r="38"
+                      cx="48"
+                      cy="48"
+                      r="46"
                       stroke="url(#gradient)"
                       strokeWidth="2"
                       fill="none"
-                      strokeDasharray={`${2 * Math.PI * 38}`}
-                      strokeDashoffset={`${2 * Math.PI * 38 * (1 - skill.xp / skill.maxXP)}`}
-                      initial={{ strokeDashoffset: 2 * Math.PI * 38 }}
-                      animate={{ strokeDashoffset: 2 * Math.PI * 38 * (1 - skill.xp / skill.maxXP) }}
+                      strokeDasharray={`${2 * Math.PI * 46}`}
+                      strokeDashoffset={`${2 * Math.PI * 46 * (1 - skill.xp / skill.maxXP)}`}
+                      initial={{ strokeDashoffset: 2 * Math.PI * 46 }}
+                      animate={{ strokeDashoffset: 2 * Math.PI * 46 * (1 - skill.xp / skill.maxXP) }}
                       transition={{ duration: 1, delay: index * 0.1 }}
                     />
                     <defs>
@@ -174,7 +187,7 @@ export default function SphericalSkills({ skills }: SphericalSkillsProps) {
                 
                 {/* Level Badge */}
                 <motion.div
-                  className={`absolute -top-2 -right-2 px-2 py-1 rounded-full bg-gradient-to-r ${xpInfo.color} text-white text-xs font-bold`}
+                  className={`absolute -top-2 -right-2 px-2 py-1 rounded-full bg-gradient-to-r ${xpInfo.color} text-white text-[10px] font-bold tracking-wide`}
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: index * 0.1 + 0.5 }}
@@ -184,7 +197,8 @@ export default function SphericalSkills({ skills }: SphericalSkillsProps) {
               </motion.div>
             );
           })}
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
 
       {/* Skill Detail Modal */}
@@ -198,7 +212,7 @@ export default function SphericalSkills({ skills }: SphericalSkillsProps) {
             onClick={() => setSelectedSkill(null)}
           >
             <motion.div
-              className="bg-black/90 backdrop-blur-xl rounded-3xl border border-white/20 p-8 max-w-md w-full mx-4"
+              className="bg-black/90 backdrop-blur-xl rounded-3xl border border-white/15 p-8 max-w-lg w-full mx-4"
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -213,7 +227,7 @@ export default function SphericalSkills({ skills }: SphericalSkillsProps) {
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-white">{selectedSkill.name}</h3>
-                    <p className="text-gray-400">{selectedSkill.category}</p>
+                    <p className="text-slate-400">{selectedSkill.category}</p>
                   </div>
                 </div>
                 <button
