@@ -1,30 +1,38 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-import "./globals.css"
-import { Toaster } from "@/components/ui/toaster"
-import { ThemeProvider } from "@/components/theme-provider"
+import { Montserrat, Unbounded } from "next/font/google"
+import { getDictionary } from "@/lib/i18n"
+import { resolveLanguage } from "@/lib/language"
+import "./portfolio.css"
 
-const inter = Inter({ subsets: ["latin"] })
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-montserrat",
+})
 
-export const metadata: Metadata = {
-  title: "Developer Portfolio",
-  description: "Backend Developer & ML Enthusiast Portfolio",
+const unbounded = Unbounded({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-unbounded",
+})
+
+export function generateMetadata(): Metadata {
+  const dict = getDictionary(resolveLanguage())
+
+  return {
+    title: dict.meta.title,
+    description: dict.meta.description,
+    alternates: { languages: { en: "/", fr: "/" } },
+  }
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const lang = resolveLanguage()
+
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          {children}
-          <Toaster />
-        </ThemeProvider>
-      </body>
+    <html lang={lang} className={`${montserrat.variable} ${unbounded.variable}`}>
+      <body>{children}</body>
     </html>
   )
 }
